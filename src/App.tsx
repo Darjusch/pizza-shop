@@ -1,6 +1,8 @@
 import React from "react";
-import logo from "./logo.jpeg";
+import logo from "./assets/logo.jpeg";
 import "./App.css";
+import PizzaItemList from "./components/PizzaItemList";
+import ShoppingCart from "./components/ShoppingCart";
 
 function App() {
   let menu = [
@@ -12,6 +14,16 @@ function App() {
       ingredients: ["cheese", "tomato", "basil"],
     },
   ];
+  let shoppingCart = [
+    {
+      name: "Margherita",
+      price: 5.99,
+      image: logo,
+      rating: 4.5,
+      ingredients: ["cheese", "tomato", "basil"],
+    },
+  ];
+
   return (
     <div className="App">
       <header className="App-header">
@@ -20,26 +32,8 @@ function App() {
       </header>
       <body>
         <h2>Menu</h2>
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <ul>
-            {menu.map((item, index) => (
-              // pizza
-              <li key={index} style={{ display: "flex", alignItems: "center" }}>
-                <img
-                  src={item.image}
-                  alt="pizza"
-                  style={{ marginRight: "10px" }}
-                />
-                <div>
-                  <h3>{item.name}</h3>
-                  <p>Price: {item.price} €</p>
-                  <p>Rating: {item.rating} ⭐️</p>
-                  <p>Ingredients: {item.ingredients.join(", ")}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <ShoppingCart items={shoppingCart} />
+        <PizzaItemList menu={menu} />
       </body>
     </div>
   );
