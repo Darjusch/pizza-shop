@@ -10,9 +10,12 @@ export const cartSlice = createSlice({
     addToCart: (state, action: PayloadAction<IPizzaItem>) => {
       state.items.push(action.payload);
     },
+    buyNow: (state) => {
+      state.items = [];
+    },
   },
 });
 
-export const { addToCart } = cartSlice.actions;
+export const { addToCart, buyNow } = cartSlice.actions;
 
 export default cartSlice.reducer;

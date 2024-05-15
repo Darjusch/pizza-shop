@@ -1,12 +1,17 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
+import { useDispatch } from "react-redux";
+import { buyNow } from "../cart/ShoppingCartSlice";
 
 function ShoppingCartPage() {
   const cartItems = useSelector((state: RootState) => state.cart.items);
 
-  // Calculate total price
   const total = cartItems.reduce((acc, item) => acc + item.price, 0);
+  const dispatch = useDispatch();
+  const handleBuyNow = () => {
+    dispatch(buyNow());
+  };
 
   return (
     <>
@@ -35,7 +40,7 @@ function ShoppingCartPage() {
       {total !== 0 && (
         <>
           <h3>Total: {total.toFixed(2)} €</h3>
-          <button>Buy Now</button>
+          <button onClick={handleBuyNow}>Buy Now</button>
         </>
       )}
     </>

@@ -2,7 +2,6 @@ import logo from "./assets/logo.jpeg";
 import RouterComponent from "./app/router"; // Import the RouterComponent from the app folder
 import { Provider } from "react-redux";
 import store from "./app/store";
-import NavBar from "./features/NavBar";
 
 function App() {
   return (
