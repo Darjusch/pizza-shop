@@ -1,21 +1,10 @@
 import logo from "./assets/logo.jpeg";
-import "./App.css";
-import PizzaItemList from "./features/pizza/PizzaItemList";
-import ShoppingCart from "./features/cart/ShoppingCart";
+import RouterComponent from "./app/router"; // Import the RouterComponent from the app folder
 import { Provider } from "react-redux";
 import store from "./app/store";
+import NavBar from "./features/NavBar";
 
 function App() {
-  let menu = [
-    {
-      name: "Margherita",
-      price: 5.99,
-      image: logo,
-      rating: 4.5,
-      ingredients: ["cheese", "tomato", "basil"],
-    },
-  ];
-
   return (
     <Provider store={store}>
       <div className="App">
@@ -23,11 +12,7 @@ function App() {
           <img src={logo} alt="pizza-logo" />
           <h1>Pizza Shop</h1>
         </header>
-        <body>
-          <h2>Menu</h2>
-          <ShoppingCart />
-          <PizzaItemList menu={menu} />
-        </body>
+        <RouterComponent />
       </div>
     </Provider>
   );
