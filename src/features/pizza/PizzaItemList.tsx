@@ -1,4 +1,4 @@
-import IPizzaItem from "../interface";
+import IPizzaItem from "./PizzaItemInterface";
 import PizzaItem from "./PizzaItem";
 
 function PizzaItemList({ menu }: { menu: IPizzaItem[] }) {
@@ -6,13 +6,7 @@ function PizzaItemList({ menu }: { menu: IPizzaItem[] }) {
     <div style={{ display: "flex", justifyContent: "center" }}>
       <ul>
         {menu.map((item, index) => (
-          <PizzaItem
-            item={item}
-            index={index}
-            onAddToCart={(item) => {
-              console.log("Added to cart", item);
-            }}
-          />
+          <PizzaItem item={item} index={index} />
         ))}
       </ul>
     </div>

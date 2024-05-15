@@ -1,16 +1,11 @@
-import IPizzaItem from "../interface";
+import { useDispatch } from "react-redux";
+import IPizzaItem from "./PizzaItemInterface";
+import { addToCart } from "../cart/ShoppingCartSlice";
 
-function PizzaItem({
-  item,
-  index,
-  onAddToCart,
-}: {
-  item: IPizzaItem;
-  index: number;
-  onAddToCart: (item: IPizzaItem) => void;
-}) {
+function PizzaItem({ item, index }: { item: IPizzaItem; index: number }) {
+  const dispatch = useDispatch();
   const handleAddToCart = () => {
-    onAddToCart(item);
+    dispatch(addToCart(item));
   };
   return (
     <li key={index} style={{ display: "flex", alignItems: "center" }}>
