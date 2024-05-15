@@ -1,11 +1,14 @@
 import IPizzaItem from "./PizzaItemInterface";
 import PizzaItem from "./PizzaItem";
+import { useSelector } from "react-redux";
 
-function PizzaItemList({ menu }: { menu: IPizzaItem[] }) {
+function PizzaItemList() {
+  const pizzas: IPizzaItem[] = useSelector((state: any) => state.pizza.pizzas); // Assuming "pizza" is your slice name
+
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <ul>
-        {menu.map((item, index) => (
+        {pizzas.map((item, index) => (
           <PizzaItem item={item} index={index} />
         ))}
       </ul>

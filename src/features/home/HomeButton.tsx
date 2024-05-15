@@ -9,7 +9,6 @@ function HomeButton() {
           src={homeIcon}
           alt="homeIcon"
           style={{ width: "50px", height: "50px" }}
-          onClick={() => {}}
         />
       </Link>
     </div>

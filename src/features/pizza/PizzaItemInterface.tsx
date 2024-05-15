@@ -2,7 +2,7 @@ interface IPizzaItem {
   name: string;
   price: number;
   rating: number;
-  ingredients: string[];
+  topping: string[];
   image: string;
 }
 

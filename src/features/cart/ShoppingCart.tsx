@@ -11,7 +11,6 @@ function ShoppingCart() {
           src={shoppingCart}
           alt="shopping-cart"
           style={{ width: "50px", height: "50px" }}
-          onClick={() => {}}
         />
       </Link>
       <p>{cartItems.length}</p>

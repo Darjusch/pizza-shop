@@ -1,19 +1,20 @@
-import logo from "../../assets/logo.jpeg";
 import "../../App.css";
 import PizzaItemList from "../pizza/PizzaItemList";
-let menu = [
-  {
-    name: "Margherita",
-    price: 5.99,
-    image: logo,
-    rating: 4.5,
-    ingredients: ["cheese", "tomato", "basil"],
-  },
-];
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { fetchPizzas } from "../pizza/PizzaSlice";
+import { AppDispatch } from "../../app/store";
+
 function HomePage() {
+  const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    dispatch(fetchPizzas());
+  }, [dispatch]);
+
   return (
     <div className="HomePage">
-      <PizzaItemList menu={menu} />
+      <PizzaItemList />
     </div>
   );
 }
