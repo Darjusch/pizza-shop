@@ -1,26 +1,37 @@
-import { useDispatch } from "react-redux";
-import IPizzaItem from "./PizzaItemInterface";
-import { addToCart } from "../cart/ShoppingCartSlice";
+import IPizzaItem from "../../types/IPizzaItem";
 import logo from "../../assets/logo.jpeg";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
-function PizzaItem({ item, index }: { item: IPizzaItem; index: number }) {
-  const dispatch = useDispatch();
-  const handleAddToCart = () => {
-    dispatch(addToCart(item));
-  };
+function PizzaItem({ item }: { item: IPizzaItem }) {
   const image = logo;
-  console.log("item -> ", item);
+  const dispatch = useDispatch();
+  const selectPizza = () => {
+    dispatch({ type: "pizza/selectPizza", payload: item });
+  };
   return (
-    <li key={index} style={{ display: "flex", alignItems: "center" }}>
-      <img src={image} alt="pizza" style={{ marginRight: "10px" }} />
-      <div>
-        <h3>{item.name}</h3>
-        <p>topping: {item.topping.join(", ")}</p>
-        <p>rank: {item.rating} ⭐️</p>
-        <p>Price: {item.price} €</p>
-        <button onClick={handleAddToCart}>Add to cart</button>
+    <Link to="/toppings">
+      <div
+        onClick={selectPizza}
+        style={{
+          border: "1px solid black",
+          borderWidth: "1px",
+          borderRadius: "10px",
+          padding: "10px",
+          marginBottom: "10px", // Add some space between each PizzaItem
+        }}
+      >
+        <li style={{ display: "flex", alignItems: "center" }}>
+          <img src={image} alt="pizza" style={{ marginRight: "10px" }} />
+          <div>
+            <h3>{item.name}</h3>
+            <p>topping: {item.topping.join(", ")}</p>
+            <p>rank: {item.rating} ⭐️</p>
+            <p>Price: {item.price} €</p>
+          </div>
+        </li>
       </div>
-    </li>
+    </Link>
   );
 }
 

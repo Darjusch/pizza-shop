@@ -1,0 +1,11 @@
+.navStyle {
+  padding: 10px 20px;
+}
+
+.containerStyle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}

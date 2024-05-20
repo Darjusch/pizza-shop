@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 import { useDispatch } from "react-redux";
 import { buyNow } from "../cart/ShoppingCartSlice";
+import { CartItem } from "./CartItem";
 
 function ShoppingCartPage() {
   const cartItems = useSelector((state: RootState) => state.cart.items);
@@ -21,19 +22,7 @@ function ShoppingCartPage() {
           {total === 0 ? (
             <h3>Nothing here yet!</h3>
           ) : (
-            cartItems.map((item, index) => (
-              <li key={index} style={{ display: "flex", alignItems: "center" }}>
-                <img
-                  src={item.image}
-                  alt="pizza"
-                  style={{ height: 100, width: 100 }}
-                />
-                <div>
-                  <h3>{item.name}</h3>
-                  <p>Price: {item.price} €</p>
-                </div>
-              </li>
-            ))
+            cartItems.map((item, index) => <CartItem key={index} item={item} />)
           )}
         </ul>
       </div>

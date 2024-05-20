@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import IPizzaItem from "../pizza/PizzaItemInterface";
+import IPizzaItem from "../../types/IPizzaItem";
 
 export const cartSlice = createSlice({
   name: "cart",

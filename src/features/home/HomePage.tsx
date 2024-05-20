@@ -1,22 +1,22 @@
-import "../../App.css";
+import "../../app/App.css";
 import PizzaItemList from "../pizza/PizzaItemList";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchPizzas } from "../pizza/PizzaSlice";
-import { AppDispatch } from "../../app/store";
+import { AppDispatch, RootState } from "../../app/store";
 
-function HomePage() {
+export const HomePage: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
-
+  const { loading, error } = useSelector((state: RootState) => state.pizza);
   useEffect(() => {
     dispatch(fetchPizzas());
   }, [dispatch]);
 
   return (
     <div className="HomePage">
-      <PizzaItemList />
+      {loading && <div>Loading...</div>}
+      {error && <div>Error: {error}</div>}
+      {!loading && !error && <PizzaItemList />}
     </div>
   );
-}
-
-export default HomePage;
+};

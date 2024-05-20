@@ -1,8 +1,7 @@
-import logo from "./assets/logo.jpeg";
-import RouterComponent from "./app/router"; // Import the RouterComponent from the app folder
+import RouterComponent from "./router"; // Import the RouterComponent from the app folder
 import { Provider } from "react-redux";
-import store from "./app/store";
-
+import store from "./store";
+import logo from "../assets/logo.jpeg";
 function App() {
   return (
     <Provider store={store}>
